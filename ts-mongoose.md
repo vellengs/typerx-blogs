@@ -1,12 +1,11 @@
 ### mongoose 与 TS 怎么搭档。
-博主早期是写C# 的, 非常喜欢 linq 和 lambda 表达式的写法, 转写 node 之后原本以为同是 javascript 系的mongodb, node 下
-写起来应该比 c# 更舒适才对, 然而直到 typescript 相对成熟后 通过 mongoose 的 types definition 才让我真正找回感觉。<br>
-最近开源了 [typerx](https://github.com/vellengs/typerx), 所以也和大家分享下这个愉悦的用法。
+博主早期是写C# 的, 非常喜欢 linq 和 lambda 表达式的写法, 转写 node 之后原本以为同是 javascript 系的mongodb, node 下写起来应该比 c# 更舒适才对, 然而直到 typescript 相对成熟后 通过 mongoose 的 types definition 才让我真正找回感觉。<br>
+最近开源了 [typerx](https://github.com/vellengs/typerx), 所以也和大家分享下这个愉悦的写法。
 
 ### 初始化项目及安装模块
 
 ```
-  npm init
+npm init
 ```
 
 ```
@@ -14,7 +13,7 @@ npm install  mongoose bluebird --save
 npm install  @types/bluebird @types/mongoose @types/node --save-dev
 ```
 
-###  创建链接字符串模块 connector.ts
+###  创建连接字符串模块 connector.ts
 
 ```
 import * as mongoose from 'mongoose';
@@ -65,7 +64,7 @@ export const ModuleDatabase = {
     Example: model<Example & Document>('Example', ExampleSchema),
 };
 ```
-
+这里是类型配对的关键
 ### 创建 example.service.ts
 
 ```
@@ -93,6 +92,6 @@ service.findOneByTitle('hello').then(res => console.log('title', res.title));
 ```
 在这里敲 res. 就能呼出 title了
 
-示例代码 [https://github.com/vellengs/typerx-blogs](https://github.com/vellengs/typerx)
+示例代码 [https://github.com/vellengs/typerx-blogs](https://github.com/vellengs/typerx-blogs/examples/monngoose)
 
 更多使用方法见 [typerx](https://github.com/vellengs/typerx)
